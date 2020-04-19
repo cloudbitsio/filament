@@ -9,17 +9,6 @@ server {
 	# Path to document root
 	root /var/www/html/ssl.com/web;
 
-	# Paths to SSL Certificate files.
-	#ssl_certificate /etc/letsencrypt/live/ssl.com/fullchain.pem;
-	#ssl_certificate_key /etc/letsencrypt/live/ssl.com/privkey.pem;
-	#ssl_trusted_certificate /path/to/ca.crt;
-	#ssl_client_certificate /path/to/default_ssl.crt;
-
-	# SSL Policies
-	include conf.d/ssl/ssl-engine.conf;
-	include conf.d/ssl/ocsp-stapling.conf;
-	include conf.d/ssl/policy-modern.conf;
-
 	# File to be used as index
 	index index.php;
 
@@ -52,6 +41,21 @@ server {
 
 	# Rewrite robots.txt
 	rewrite ^/robots.txt$ /index.php last;
+	
+	# Paths to SSL Certificate files.
+	#
+	ssl_certificate /path/to/certificate.crt;
+	ssl_certificate_key /path/to/key.key;
+	#ssl_trusted_certificate /path/to/ca.crt;
+	#ssl_client_certificate /etc/nginx/default_ssl.crt;
+
+	# SSL Policies
+	#
+	include conf.d/ssl/ssl-engine.conf; # DISABLE if using LetsEncrypt Certbot
+	include conf.d/ssl/policy-modern.conf; # DISABLE if using LetsEncrypt Certbot
+	#include conf.d/ssl/ocsp-stapling.conf; # Use ONLY if ssl_trusted_certificate present
+	#ssl_dhparam /etc/ssl/ssl-dhparams.pem; # DISABLE if using LetsEncrypt Certbot. Generate before use.
+
 }
 
 # Redirect http to https
