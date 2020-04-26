@@ -37,7 +37,7 @@ server {
 		include conf.d/fastcgi-params.conf;
 
 		# Use the php pool defined in the upstream variable.
-		# See global/php-pool.conf for definition.
+		# See conf.d/php-fpm.conf for definition.
 		fastcgi_pass   $upstream;
 	}
 

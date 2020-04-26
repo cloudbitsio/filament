@@ -43,6 +43,7 @@ server {
 		include conf.d/fastcgi-params.conf;
 
 		# Use the php pool defined in the upstream variable.
+		# See conf.d/php-fpm.conf for definition.
 		fastcgi_pass $upstream;
 
 		# Skip cache based on rules in conf.d/server/fastcgi-cache.conf.
