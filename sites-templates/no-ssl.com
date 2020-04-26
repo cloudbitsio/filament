@@ -34,7 +34,7 @@ server {
 
 	location ~ \.php$ {
 		try_files $uri =404;
-		include global/fastcgi-params.conf;
+		include conf.d/fastcgi-params.conf;
 
 		# Use the php pool defined in the upstream variable.
 		# See global/php-pool.conf for definition.
