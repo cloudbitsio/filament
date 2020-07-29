@@ -20,7 +20,7 @@ tar -czvf /etc/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx
 Download the new configuration into `/etc/nginx`
 
 ```bash
-git clone https://github.com/azadcreative/nginx-configs /etc/nginx
+git clone https://github.com/saddam-azad/nginx-configs /etc/nginx
 ```
 
 ## Usage
