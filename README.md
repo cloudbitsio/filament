@@ -72,6 +72,7 @@ The configurations have the following structure:
 │   │   ├── cache.conf
 │   │   ├── cache-expires.conf
 │   │   ├── cache-fastcgi.conf
+│   │   ├── fastcgi-params.conf
 │   ├── security/
 │   │   ├── exclusions.conf
 │   │   ├── policies.conf
@@ -85,7 +86,6 @@ The configurations have the following structure:
 │   │   ├── wordpress-cache.conf
 │   │   ├── wordpress-security.conf
 │   │   ├── wordpress-yoast.conf
-│   ├── fastcgi-params.conf
 │   ├── gzip.conf
 │   ├── http.conf
 │   ├── php-fpm.conf

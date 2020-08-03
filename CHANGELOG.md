@@ -1,6 +1,7 @@
 ### 1.2
 * Reshuffled http block and server block rules due to global rules not applying
 * Updated templates
+* Removed website.com from root path
 
 ### 1.1
 * Updated documentation
