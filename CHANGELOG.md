@@ -2,6 +2,7 @@
 * Reshuffled http block and server block rules due to global rules not applying
 * Updated templates
 * Removed website.com from root path
+* Added php:9000 as the default option in php-fpm.conf 
 
 ### 1.1
 * Updated documentation
