@@ -1,3 +1,7 @@
+### 1.2
+* Reshuffled http block and server block rules due to global rules not applying
+* Updated templates
+
 ### 1.1
 * Updated documentation
 * Changed sites-templates to templates 

@@ -69,27 +69,26 @@ The configurations have the following structure:
 ./
 ├── conf.d/
 │   ├── performance/
-│   │   ├── cache-file-descriptors.conf
-│   │   ├── cache-global.conf
-│   │   ├── content-transformation.conf
-│   │   ├── gzip.conf
-│   ├── security/
-│   │   ├── cors.conf
-│   │   ├── policies.conf
-│   ├── server/
+│   │   ├── cache.conf
 │   │   ├── cache-expires.conf
+│   │   ├── cache-fastcgi.conf
+│   ├── security/
 │   │   ├── exclusions.conf
-│   │   ├── fastcgi-cache.conf
-│   │   ├── wordpress-cache.conf
-│   │   ├── wordpress-security.conf
-│   │   ├── wordpress-yoast.conf
+│   │   ├── policies.conf
 │   └── ssl/
 │   │   ├── ocsp-stapling.conf
 │   │   ├── policy-deprecated.conf
 │   │   ├── policy-intermediate.conf
 │   │   ├── policy-modern.conf
 │   │   ├── ssl-engine.conf
-
+│   ├── wordpress/
+│   │   ├── wordpress-cache.conf
+│   │   ├── wordpress-security.conf
+│   │   ├── wordpress-yoast.conf
+│   ├── fastcgi-params.conf
+│   ├── gzip.conf
+│   ├── http.conf
+│   ├── php-fpm.conf
 ├── sites-available/
 ├── sites-enabled/
 ├── templates/
@@ -99,6 +98,7 @@ The configurations have the following structure:
 │   ├── ssl-fastcgi.conf
 ├── mime.types
 └── nginx.conf
+
 ```
 
 * **`sites-available/` folder** should contain your working server blocks and drafts. Edit your server block files here because some test editors create temp files. 
@@ -109,15 +109,15 @@ The configurations have the following structure:
 
   Contains all the config snippets and are loaded automatically. Do not change anything inside unless you know what you are doing.
 
-  If you need to change the PHP version, edit `php-fpm.conf`.
+  If you need to change the PHP version, edit `php-fpm.conf`. 
+  
+  `http.conf` and `gzip.conf` are global HTTP and GZip rules that are applied to the http block in our `nginx.conf` main configuration file.
 
   * **`performance/` subfolder** contains files that improve performance of the web server blocks.
 
   * **`security/` subfolder** headers for cross-origin requests and security policies. Check out [securityheaders.com](https://securityheaders.com) for details.
 
     If you are using a no-ssl config with a `.test` domain for local development, disable HSTS in `policies.conf`
-
-  * **`server/` subfolder** contains rules that are added to the server blocks. This includes server block level cache headers, file exclusions, fcgi cache rules and plenty of rules for securing Wordpress.
 
   * **`ssl/` subfolder** contains SSL rules: 
 
@@ -132,6 +132,9 @@ The configurations have the following structure:
       `policy-modern.conf` supports TLS v1.2 and v1.3. This is the default in the provided templates.
 
     - `ocsp-stapling.conf` contains resolvers for CloudFlare, Google and OpenDNS.
+
+  * **`wordpress/` subfolder** contains rules that are for performance and security for Wordpress.
+
 
 * **`mime-types.conf` file** is responsible for mapping file extensions to mime types.
 
