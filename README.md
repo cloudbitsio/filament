@@ -147,7 +147,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 - Brotli support
 - mod_pagespeed support
-- ZStandard support
 
 ## Support
 
