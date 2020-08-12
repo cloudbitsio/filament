@@ -1,5 +1,6 @@
 ### 1.3
 * Added ACME Challenge locations to SSL templates
+* SSL certs are uncommented by default
 
 ### 1.2
 * Reshuffled http block and server block rules due to global rules not applying
