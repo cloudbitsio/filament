@@ -123,7 +123,7 @@ types {
     application/xslt+xml                  xsl;
     application/zip                       zip;
     text/calendar                         ics;
-    text/css                              css;
+    text/css                              css plain;
     text/csv                              csv;
     text/html                             htm html shtml;
     text/markdown                         md markdown;
