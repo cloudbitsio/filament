@@ -1,6 +1,21 @@
-# Nginx Configurations
+<p align="center">
+  <a href="https://github.com/cloudbitsio/filament"><img width="240" src="filament.svg" /></a>
+</p>
+<p align="center">Drop-in replacement for /etc/nginx</p>
+<p align="center">
+  <a href="#nginx-configurations">About</a> |
+  <a href="#installation">Installation</a> |
+  <a href="#usage">Usage</a> |
+  <a href="#whats-inside">What's Inside</a> |
+  <a href="#credits">Credits</a>
+</p>
+---
 
-A compilation of best practices of nginx server configurations.
+# NGINX Configurations
+
+The goal of this project is to maintain a compilation of best practices of NGINX server configurations and some opinionated patterns for ease of configurability.
+
+Licensed under [MIT](./LICENSE).
 
 Features: 
 - HTTP for local development, HTTPS with/without FastCGI Cache;
@@ -11,36 +26,37 @@ Features:
 
 ## Installation
 
-Assuming you have nginx installed, backup your `/etc/nginx` folder
+Assuming you have NGINX installed, 
+
+1. Backup your `/etc/nginx` folder.
 
 ```bash
 tar -czvf /etc/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx
 ```
-
-Download the new configuration into `/etc/nginx`
+2. Filament is a drop-in replacement for NGINX configs. Download Filament into `/etc/nginx`.
 
 ```bash
-git clone https://github.com/saddam-azad/nginx-configs /etc/nginx
+git clone https://github.com/cloudbitsio/filament /etc/nginx
 ```
 
 ## Usage
 
-You have three templates in the `templates` folder. `default.conf` is the default_server that returns 444 to all requests.
+You have three templates in the `templates` folder.
 
 - `no-ssl.conf` is a simple http with no-www configs. Great for development
 - `ssl.conf` is the one you should be using (provided you have an SSL certificate)
-- `ssl-fastcgi.conf` is configured with nginx fastcgi cache
+- `ssl-fastcgi.conf` is configured with NGINX fastcgi cache
 
 Start by copying a template file to `sites-available`
 
 ```bash
-cp /etc/nginx/templates/ssl.conf /etc/nginx/sites-available/mysite.com.conf
+cp /etc/nginx/templates/ssl.conf /etc/nginx/sites-available/http.conf
 ```
 
-Replace `website.com` with your hostname
+Replace `example.com` with your hostname
 
 ```bash
-sed -i 's/website.com/mysite.com/g' /etc/nginx/sites-available/mysite.com.conf
+sed -i 's|example.com|myawesomewebsite.com|g' /etc/nginx/sites-available/http.conf
 ```
 
 - Open the file and check the path to document root
@@ -48,14 +64,14 @@ sed -i 's/website.com/mysite.com/g' /etc/nginx/sites-available/mysite.com.conf
 - If you want site-specific logs, uncomment the `access_log` and `error_log` configs (make sure your log files exist)
 - Provide path to your SSL certificates
 
-Create symlinks of the `default` server and your custom server into `sites-enabled`
+`default.conf` is the default_server that returns 444 to all requests. Create symlinks of both the `default` server and your custom server into `sites-enabled`.
 
 ```bash
 ln -s /etc/nginx/templates/default.conf /etc/nginx/sites-enabled/default.conf
-ln -s /etc/nginx/sites-available/mysite.com.conf /etc/nginx/sites-enabled/mysite.com.conf
+ln -s /etc/nginx/sites-available/http.conf /etc/nginx/sites-enabled/http.conf
 ```
 
-Finally, test your nginx configuration before you (re)start your service
+Finally, test your nginx configuration before you (re)start your service.
 
 ```bash
 nginx -t
@@ -141,6 +157,7 @@ The configurations have the following structure:
 * **`nginx.conf` file** is the main configuration file.
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## TODO
@@ -150,7 +167,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Support
 
-Nginx 1.8.0+
+NGINX 1.8.0+
 
 ## Credits
 
